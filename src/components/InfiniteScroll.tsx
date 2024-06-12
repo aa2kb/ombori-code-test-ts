@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Box, Image, Text, Spinner } from '@chakra-ui/react';
+import { Box, Image, Text, Spinner, Card, CardHeader, Flex, Avatar, Heading, Center } from '@chakra-ui/react';
 import { fetchUsers } from '../services/api';
 
 interface User {
@@ -67,27 +67,48 @@ const InfiniteScroll: React.FC = () => {
                 </Box>
             ) : (
                 <>
+                    <Center>
+                        <Heading as="h1" size="xl" mb={6}>
+                            Users
+                        </Heading>
+                    </Center>
                     {users.map((user, index) => {
                         if (users.length === index + 1) {
                             return (
-                                <Box key={user.id} ref={lastUserElementRef} p={4} borderWidth={1} borderRadius="lg" mb={4}>
-                                    <Image boxSize="100px" src={user.avatar} alt={user.first_name} mb={4} />
-                                    <Text>{user.first_name} {user.last_name}</Text>
-                                    <Text>{user.email}</Text>
-                                </Box>
+                                <Card variant='outline' key={user.id} ref={lastUserElementRef}>
+                                    <CardHeader>
+                                        <Flex>
+                                            <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                                                <Avatar name={user.first_name} src={user.avatar} />
+                                                <Box>
+                                                    <Heading size='sm'>{user.first_name} {user.last_name}</Heading>
+                                                    <Text>{user.email}</Text>
+                                                </Box>
+                                            </Flex>
+                                        </Flex>
+                                    </CardHeader>
+                                </Card>
                             );
                         } else {
                             return (
-                                <Box key={user.id} p={4} borderWidth={1} borderRadius="lg" mb={4}>
-                                    <Image boxSize="100px" src={user.avatar} alt={user.first_name} mb={4} />
-                                    <Text>{user.first_name} {user.last_name}</Text>
-                                    <Text>{user.email}</Text>
-                                </Box>
+                                <Card variant='outline' key={user.id}>
+                                    <CardHeader>
+                                        <Flex>
+                                            <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
+                                                <Avatar name={user.first_name} src={user.avatar} />
+                                                <Box>
+                                                    <Heading size='sm'>{user.first_name} {user.last_name}</Heading>
+                                                    <Text>{user.email}</Text>
+                                                </Box>
+                                            </Flex>
+                                        </Flex>
+                                    </CardHeader>
+                                </Card>
                             );
                         }
                     })}
                     {loading && <Spinner />}
-                    {!hasMore && !loading && <Text>No more results found</Text>}
+                    {!hasMore && !loading && <Center><Text>No more results found</Text></Center>}
                 </>
             )}
         </Box>
