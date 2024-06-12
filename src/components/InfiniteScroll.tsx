@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Box, Image, Text, Spinner, Card, CardHeader, Flex, Avatar, Heading, Center } from '@chakra-ui/react';
+import { Box, Text, Spinner, Card, CardHeader, Flex, Avatar, Heading, Center } from '@chakra-ui/react';
 import { fetchUsers } from '../services/api';
 
 interface User {
