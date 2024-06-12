@@ -7,7 +7,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.header {
+  background-color: #f1f1f1;
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 24px;
+}
+
+.footer {
+  background-color: #f1f1f1;
+  height: 50px;
+}
+
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.chakra-card {
+  border-style: none;
+  border-bottom: 1px solid black;
 }

@@ -67,8 +67,8 @@ const InfiniteScroll: React.FC = () => {
                 </Box>
             ) : (
                 <>
-                    <Center>
-                        <Heading as="h1" size="xl" mb={6}>
+                    <Center className='header'>
+                        <Heading as="h1" size="xl">
                             Users
                         </Heading>
                     </Center>
@@ -108,7 +108,7 @@ const InfiniteScroll: React.FC = () => {
                         }
                     })}
                     {loading && <Spinner />}
-                    {!hasMore && !loading && <Center><Text>No more results found</Text></Center>}
+                    {!hasMore && !loading && <Center className='footer'><Text>No more results found</Text></Center>}
                 </>
             )}
         </Box>
